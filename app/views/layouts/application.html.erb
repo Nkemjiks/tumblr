@@ -4,12 +4,32 @@
     <title>Tumblr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap' %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="sidebar">
+      <ul>
+        <li><%= link_to "Tumblr", root_path %></li>
+        <li><%= link_to "Posts", root_path %></li>
+        <li>About</li>
+      </ul>
+
+      <p>User Login</p>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <p>Post Feed</p>
+        <div>
+          <button><%= link_to  "New post", new_post_path %></button>
+          <button>Logout>
+        </div>
+      </div>
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,10 @@
+<h1>Posts</h1>
+<div>
+  <% @posts.each do |post| %>
+    <div>
+      <h2><%= link_to post.title, post %></h2>
+      <p><%= post.content.truncate(100) %></p>
+      <p><%= time_ago_in_words(post.created_at) %></p>
+    </div>
+  <% end %>
+</div>
