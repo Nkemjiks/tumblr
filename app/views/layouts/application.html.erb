@@ -17,18 +17,24 @@
         <li><%= link_to "Posts", root_path %></li>
         <li>About</li>
       </ul>
-
-      <p>User Login</p>
     </div>
     <div class="main-content">
       <div class="header">
         <p>Post Feed</p>
-        <div>
-          <button><%= link_to  "New post", new_post_path %></button>
-          <button>Logout</button>
-        </div>
+        <% if user_signed_in? %>
+          <div>
+            <button><%= link_to  "New post", new_post_path %></button>
+            <button><%= link_to  "Logout", destroy_user_session_path, method: :delete %></button>
+          </div>
+        <% else %>
+          <div>
+            <button><%= link_to  "Login", new_user_session_path %></button>
+            <button><%= link_to  "Signup", new_user_registration_path %></button>
+          </div>
+        <% end%>
       </div>
-      <p id="notice"><%= notice %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>
